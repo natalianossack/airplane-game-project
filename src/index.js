@@ -13,7 +13,22 @@ class Game {
     this.player = new Player();
     this.playing = true;
     this.intervalId = setInterval(this.updateObstacles, 20);
-  }
+  };
+
+// setTimeout(() => {
+//   gameScreen.classList.replace(this.player)
+// }; 3000);
+// let countDown = [3, 2, 1, "GO!", ""]
+// let i = 0
+// let intervalCountDown = setIntervalId(() =>{
+//   this.player = countDown[i]; i++
+
+//   if(i === countDown.length){
+//     clearInterval(intervalCountDown)
+//   }
+
+// },1000)
+
   updateObstacles = () => {
     this.frames += 1;
 
@@ -36,22 +51,20 @@ class Game {
       }
     }
   };
-  createRandomObstacle= () => {
+  createRandomObstacle = () => {
     const y = Math.floor(Math.random() * gameScreen.offsetHeight);
     const obstacle = new Obstacle(y);
     this.obstacles.push(obstacle);
-  }
+  };
   countScore() {
-    // this.score = Math.floor(this.frames / 30);
     this.score += 1;
     document.querySelector("#score").innerHTML = this.score;
-    //document.querySelector("#score").innerHTML = this.obstacles;
   }
-  showGameOver= () => {
-    console.log("gameover")
+  showGameOver = () => {
+    console.log("gameover");
     document.querySelector("#game-over span").innerHTML = this.score;
     document.querySelector("#game-over").classList.remove("hidden");
-  }
+  };
 }
 
 class Player {
@@ -68,7 +81,7 @@ class Player {
   createElement() {
     const airplane = document.createElement("img");
     airplane.setAttribute("id", "player");
-    airplane.src="../gifs/Airplane.gif"
+    airplane.src = "../gifs/Airplane-unscreen.gif";
     airplane.style.width = `${this.width}px`;
     airplane.style.height = `${this.height}px`;
     airplane.style.position = "absolute";
@@ -132,16 +145,17 @@ class Obstacle {
   }
 
   createElement() {
-    const div = document.createElement("div");
-    div.classList.add("obstacle");
-    div.style.width = `${this.width}px`;
-    div.style.height = `${this.height}px`;
-    div.style.position = "absolute";
-    div.style.top = `${this.y}px`;
-    div.style.left = `${this.x}px`;
-    div.style.backgroundColor = this.color;
-    div.style.borderRadius = "50%";
-    this.element = div;
+    const bird = document.createElement("img");
+    bird.classList.add("obstacle");
+    bird.src = "../gifs/bird.gif";
+    bird.style.width = `${this.width}px`;
+    bird.style.height = `${this.height}px`;
+    bird.style.position = "absolute";
+    bird.style.top = `${this.y}px`;
+    bird.style.left = `${this.x}px`;
+    // bird.style.backgroundColor = this.color;
+    // bird.style.borderRadius = "50%";
+    this.element = bird;
   }
   show() {
     gameScreen.appendChild(this.element);
