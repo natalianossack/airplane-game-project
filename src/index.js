@@ -6,28 +6,32 @@ class Game {
     this.playing = false;
     this.intervalId = null;
     this.frames = 0;
+    this.soundHit = new Audio();
+    this.soundHit.src = "../sons/efeitos_hit.wav";
+    this.soundHit.volume = 0.2;
   }
   start = () => {
-    startScreen.classList.add("hidden");
-    gameScreen.classList.remove("hidden");
     this.player = new Player();
     this.playing = true;
+
     this.intervalId = setInterval(this.updateObstacles, 20);
   };
 
-// setTimeout(() => {
-//   gameScreen.classList.replace(this.player)
-// }; 3000);
-// let countDown = [3, 2, 1, "GO!", ""]
-// let i = 0
-// let intervalCountDown = setIntervalId(() =>{
-//   this.player = countDown[i]; i++
-
-//   if(i === countDown.length){
-//     clearInterval(intervalCountDown)
-//   }
-
-// },1000)
+  startCountDown() {
+    startScreen.classList.add("hidden");
+    gameScreen.classList.remove("hidden");
+    let countDown = [3, 2, 1, "GO!", ""];
+    let i = 0;
+    const count = document.querySelector("#countdown");
+    let intervalCountDown = setInterval(() => {
+      count.innerHTML = countDown[i];
+      i++;
+      if (i === countDown.length) {
+        clearInterval(intervalCountDown);
+        this.start();
+      }
+    }, 1000);
+  }
 
   updateObstacles = () => {
     this.frames += 1;
@@ -40,14 +44,24 @@ class Game {
       this.obstacles[i].moveLeft();
       const crash = this.player.crashesWith(this.obstacles[i]);
       if (crash) {
+        //console.log('makesound');
         clearInterval(this.intervalId);
         this.playing = false;
+        this.soundHit.play();
         this.showGameOver();
       }
       if (this.obstacles[i].x <= 0) {
         this.obstacles[i].hide();
         this.obstacles.shift();
         this.countScore();
+      }
+
+      if (this.player.x + this.player.width >= gameScreen.offsetWidth) {
+        console.log("win");
+        clearInterval(this.intervalId);
+        this.playing = false;
+        this.player.hide();
+        this.showWinTheGame();
       }
     }
   };
@@ -56,14 +70,19 @@ class Game {
     const obstacle = new Obstacle(y);
     this.obstacles.push(obstacle);
   };
-  countScore() {
+  countScore = () => {
     this.score += 1;
     document.querySelector("#score").innerHTML = this.score;
-  }
+  };
   showGameOver = () => {
-    console.log("gameover");
+    // console.log("gameover");
     document.querySelector("#game-over span").innerHTML = this.score;
     document.querySelector("#game-over").classList.remove("hidden");
+  };
+  //Caso ganhe o jogo
+  showWinTheGame = () => {
+    document.querySelector("#win-the-game span").innerHTML = this.score;
+    document.querySelector("#win-the-game").classList.remove("hidden");
   };
 }
 
@@ -91,6 +110,9 @@ class Player {
   }
   show() {
     gameScreen.appendChild(this.element);
+  }
+  hide() {
+    gameScreen.removeChild(this.element);
   }
 
   moveLeft() {
@@ -164,7 +186,6 @@ class Obstacle {
     gameScreen.removeChild(this.element);
   }
   moveLeft() {
-    console.log(this.y);
     if (this.x <= 0) return;
     this.x -= this.speed;
     this.element.style.left = `${this.x}px`;

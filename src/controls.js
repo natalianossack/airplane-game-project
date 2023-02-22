@@ -5,7 +5,7 @@ const gameScreen = document.querySelector("#game-area");
 
 const startButton = document.querySelector("#start-screen button");
 startButton.addEventListener("click", () => {
-  game.start();
+  game.startCountDown();
 });
 
 document.addEventListener("keydown", (event) => {
