@@ -3,17 +3,21 @@ class Game {
     this.score = 0;
     this.obstacles = [];
     this.player = null;
-    this.playing = false;
+    this.playing = false; 
     this.intervalId = null;
     this.frames = 0;
     this.soundHit = new Audio();
     this.soundHit.src = "../sons/efeitos_hit.wav";
     this.soundHit.volume = 0.2;
+    this.soundPoint = new Audio();
+    this.soundPoint.src = "../sons/efeitos_ponto.wav";
+    this.soundPoint.volume = 0.2;
+    this.soundWin = new Audio();
+    this.soundWin.src = "../sons/efeitos__win.wav"
   }
   start = () => {
     this.player = new Player();
     this.playing = true;
-
     this.intervalId = setInterval(this.updateObstacles, 20);
   };
 
@@ -44,7 +48,6 @@ class Game {
       this.obstacles[i].moveLeft();
       const crash = this.player.crashesWith(this.obstacles[i]);
       if (crash) {
-        //console.log('makesound');
         clearInterval(this.intervalId);
         this.playing = false;
         this.soundHit.play();
@@ -52,15 +55,17 @@ class Game {
       }
       if (this.obstacles[i].x <= 0) {
         this.obstacles[i].hide();
+        this.soundPoint.play();
         this.obstacles.shift();
         this.countScore();
       }
 
       if (this.player.x + this.player.width >= gameScreen.offsetWidth) {
-        console.log("win");
+        //console.log("win");
         clearInterval(this.intervalId);
         this.playing = false;
         this.player.hide();
+        this.soundWin.play();
         this.showWinTheGame();
       }
     }
@@ -175,8 +180,6 @@ class Obstacle {
     bird.style.position = "absolute";
     bird.style.top = `${this.y}px`;
     bird.style.left = `${this.x}px`;
-    // bird.style.backgroundColor = this.color;
-    // bird.style.borderRadius = "50%";
     this.element = bird;
   }
   show() {
