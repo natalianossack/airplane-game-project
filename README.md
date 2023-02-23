@@ -1,22 +1,29 @@
-# Airplane Game!
+![](https://i.imgur.com/1QgrNNw.png)
 
+**Ironhack WDPT-SAO PAULO**
+
+---
+## **Airplane Game!**
 This is my first Ironhack project for Module 1.
-Made with love s2
+
+Made with love :heart:
+
 ---
-## Introduction
+### **Introduction**
+The Airplane Game is a simple game where you take control of a airplane and avoid to crash a bird. :airplane:
 
-The Airplane Game is a simple game where you take control of a airplane and avoid to crash a bird.
 ---
-### Links
+### **Links**
+Click [**HERE**](link jogo) to play the game.
 
-Click HERE to play the game.
+Click [**HERE**](link apresentaçao) to read the presentation of the project.
+
 ---
-#### How to play
+### **How to Play**
+You just have to use the arrow keys of your computer: :arrow_left::arrow_right::arrow_up::arrow_down:
 
-Arrow keys: 
 ---
+### **Before You Go**
+If you liked to play the game, please let me know. :smiley:
 
-##### Before you go
-
-If you liked to play the game, please let me know. =)
-I bring good news...you can play it everywhere online. Enjoy!!!
+I bring good news...you can play it everywhere online. **Enjoy!!!** 

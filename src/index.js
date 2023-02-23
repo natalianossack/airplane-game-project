@@ -3,7 +3,7 @@ class Game {
     this.score = 0;
     this.obstacles = [];
     this.player = null;
-    this.playing = false; 
+    this.playing = false;
     this.intervalId = null;
     this.frames = 0;
     this.soundHit = new Audio();
@@ -13,7 +13,7 @@ class Game {
     this.soundPoint.src = "../sons/efeitos_ponto.wav";
     this.soundPoint.volume = 0.2;
     this.soundWin = new Audio();
-    this.soundWin.src = "../sons/efeitos__win.wav"
+    this.soundWin.src = "../sons/efeitos__win.wav";
   }
   start = () => {
     this.player = new Player();
@@ -61,7 +61,6 @@ class Game {
       }
 
       if (this.player.x + this.player.width >= gameScreen.offsetWidth) {
-        //console.log("win");
         clearInterval(this.intervalId);
         this.playing = false;
         this.player.hide();
@@ -80,11 +79,9 @@ class Game {
     document.querySelector("#score").innerHTML = this.score;
   };
   showGameOver = () => {
-    // console.log("gameover");
     document.querySelector("#game-over span").innerHTML = this.score;
     document.querySelector("#game-over").classList.remove("hidden");
   };
-  //Caso ganhe o jogo
   showWinTheGame = () => {
     document.querySelector("#win-the-game span").innerHTML = this.score;
     document.querySelector("#win-the-game").classList.remove("hidden");
