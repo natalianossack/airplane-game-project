@@ -102,7 +102,7 @@ class Player {
   createElement() {
     const airplane = document.createElement("img");
     airplane.setAttribute("id", "player");
-    airplane.src = "../gifs/Airplane-unscreen.gif";
+    airplane.src = "./gifs/Airplane-unscreen.gif";
     airplane.style.width = `${this.width}px`;
     airplane.style.height = `${this.height}px`;
     airplane.style.position = "absolute";
@@ -171,7 +171,7 @@ class Obstacle {
   createElement() {
     const bird = document.createElement("img");
     bird.classList.add("obstacle");
-    bird.src = "../gifs/bird.gif";
+    bird.src = "./gifs/bird.gif";
     bird.style.width = `${this.width}px`;
     bird.style.height = `${this.height}px`;
     bird.style.position = "absolute";

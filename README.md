@@ -16,7 +16,7 @@ The Airplane Game is a simple game where you take control of a airplane and avoi
 ### **Links**
 Click [**HERE**](https://natalianossack.github.io/airplane-game-project/) to play the game.
 
-Click [**HERE**](link apresentaçao) to read the presentation of the project.
+Click [**HERE**](https://www.canva.com/design/DAFbIbxeWEo/v9BVm7CYQghTc872ZH_Kkg/view?utm_content=DAFbIbxeWEo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) to read the presentation of the project.
 
 ---
 ### **How to Play**
