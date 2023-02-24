@@ -7,13 +7,13 @@ class Game {
     this.intervalId = null;
     this.frames = 0;
     this.soundHit = new Audio();
-    this.soundHit.src = "../sons/efeitos_hit.wav";
+    this.soundHit.src = "./sons/efeitos_hit.wav";
     this.soundHit.volume = 0.2;
     this.soundPoint = new Audio();
-    this.soundPoint.src = "../sons/efeitos_ponto.wav";
+    this.soundPoint.src = "./sons/efeitos_ponto.wav";
     this.soundPoint.volume = 0.2;
     this.soundWin = new Audio();
-    this.soundWin.src = "../sons/efeitos__win.wav";
+    this.soundWin.src = "./sons/efeitos__win.wav";
   }
   start = () => {
     this.player = new Player();
